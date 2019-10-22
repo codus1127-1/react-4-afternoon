@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+// import {withRouter} from 'react-router-dom'
 
-export default class Student extends Component {
+class Student extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,16 +20,16 @@ export default class Student extends Component {
     })
   }
 
-  goBack = () => {
-    window.history.back()
+  // goBack = () => {
+  //   this.props.history.push(`/classlist/${this.props.match.params.class}`)
 
-  }
+  // }
 
   render() {
     let student = this.state.studentInfo
     return (
       <div className="box">
-        <button onClick={this.goBack}>Go Back</button>
+        <button onClick={() => this.props.history.goBack()}>Go Back</button>
         <h1>Student</h1>
         <h1>{student.first_name} {student.last_name}</h1>
         <h3>Grade: {student.grade}</h3>
@@ -38,3 +39,4 @@ export default class Student extends Component {
     )
   }
 }
+export default Student
