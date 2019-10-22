@@ -20,6 +20,10 @@ export default class ClassList extends Component {
     })
   }
 
+  goBack = () => {
+    window.history.back()
+  }
+
   render() {
     let studentsToDisplay = this.state.students.map((element, index) => {
       return <Link key={index} to={`/student/${element.id}`}>
@@ -29,6 +33,7 @@ export default class ClassList extends Component {
     })
     return (
       <div className="box">
+        <button onClick={this.goBack}>Go Back</button>
         <h1>{this.props.match.params.class}</h1>
         <h2>ClassList:</h2>
         {studentsToDisplay}
